@@ -89,6 +89,9 @@ export default class SpaceVR extends React.Component {
             transform: [
               {translate: [10, 10, -100]},
               {scale: 0.05 * this.state.zoomLevel},
+              {rotateY:this.state.rotation},
+              {rotateX: 0},
+              {rotateZ: -10}
             ]
           }}
           lit={true}
@@ -100,12 +103,12 @@ export default class SpaceVR extends React.Component {
         <Pano source={
           {
             uri: [
-              '../static_assets/space_right.png',
-              '../static_assets/space_left.png',
-              '../static_assets/space_up.png',
-              '../static_assets/space_down.png',
-              '../static_assets/space_front.png',
-              '../static_assets/space_back.png',
+              '../static_assets/flatrock_rt.png',
+              '../static_assets/flatrock_lf.png',
+              '../static_assets/flatrock_up.png',
+              '../static_assets/flatrock_dn.png',
+              '../static_assets/flatrock_bk.png',
+              '../static_assets/flatrock_ft.png',
             ]
           }
         } />
