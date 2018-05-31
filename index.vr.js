@@ -73,8 +73,8 @@ export default class SpaceVR extends React.Component {
             transform: [
               {translate: [-25, 0, -70]},
               {scale: 0.05 * this.state.zoomLevel},
-              {rotateY: 90},
-              {rotateX: this.state.rotation},
+              {rotateY:this.state.rotation},
+              {rotateX: 0},
               {rotateZ: -10},
             ]
           }}
