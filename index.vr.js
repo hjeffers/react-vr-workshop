@@ -13,16 +13,21 @@ import {
 export default class SpaceVR extends React.Component {
   state = {
     rotation: 90,
-    zoomLevel: 0.0002,
+    zoomLevel: 1,
   }
 
   rotate = () => {
     this.setState({
       rotation: this.state.rotation + 1,
-      zoomLevel: this.state.zoomLevel + 0.00001
     })
 
     requestAnimationFrame(this.rotate)
+  }
+
+  zoom = (delta) => {
+    this.setState({
+      zoomLevel: this.state.zoomLevel + delta
+    })
   }
 
   componentDidMount() {
@@ -33,6 +38,7 @@ export default class SpaceVR extends React.Component {
     return (
       <View style={{ flexDirection: 'row' }}>
         <VrButton
+          onClick={() => this.zoom(.1)}
           style={{
             backgroundColor: '#777879',
             fontSize: 0.8,
@@ -47,6 +53,7 @@ export default class SpaceVR extends React.Component {
           <Text>+</Text>
         </VrButton>
         <VrButton
+          onClick={() => this.zoom(-.1)}
           style={{
             backgroundColor: '#777879',
             fontSize: 0.8,
@@ -65,7 +72,7 @@ export default class SpaceVR extends React.Component {
           style={{
             transform: [
               {translate: [-25, 0, -70]},
-              {scale: 0.05},
+              {scale: 0.05 * this.state.zoomLevel},
               {rotateY: 90},
               {rotateX: this.state.rotation},
               {rotateZ: -10},
@@ -81,7 +88,7 @@ export default class SpaceVR extends React.Component {
           style={{
             transform: [
               {translate: [10, 10, -100]},
-              {scale: 0.05},
+              {scale: 0.05 * this.state.zoomLevel},
             ]
           }}
           lit={true}
